@@ -1,7 +1,9 @@
+
+
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
-
+//for now dont touch this because im still a little confused on how it works
 public interface IWorld {
 
 	/** produce an updated state of this world after one time tick */
