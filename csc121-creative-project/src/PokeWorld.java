@@ -1,6 +1,7 @@
 import java.util.Objects;
 
-import entity.Player;
+
+
 import processing.core.*;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
@@ -39,29 +40,9 @@ public class PokeWorld implements IWorld{
 	public PApplet draw(PApplet c) {
         c.background(135, 206, 250);  // clear the screen each time (color sky blue)
         
-        this.player.draw(c, ));
+        this.player.draw(c);
         return c;
     }
-	
-	
-	 public PokeWorld keyPressed(KeyEvent kev) {
-	        if (kev.getKeyCode() == PApplet.UP) {
-	            return new PokeWorld(this.a1.translate(new Posn(0, -10)), this.a2, this.bob, this.isPaused);
-	        } else if (kev.getKeyCode() == PApplet.DOWN) {
-	            return new PokeWorld(this.a1.translate(new Posn(0, 10)), this.a2, this.bob, this.isPaused);
-	        } else if (kev.getKeyCode() == PApplet.LEFT) {
-	            return new PokeWorld(this.a1.translate(new Posn(-10, 0)), this.a2, this.bob, this.isPaused);
-	        } else if (kev.getKeyCode() == PApplet.RIGHT) {
-	            return new PokeWorld(this.a1.translate(new Posn(10, 0)), this.a2, this.bob, this.isPaused);
-	        } else if (kev.getKeyCode() == PApplet.TAB) {
-	            return new PokeWorld(this.a2, this.a1, this.bob, this.isPaused);
-	        } else if (kev.getKey() == ' ') {  // space
-	            return new PokeWorld(this.a1, this.a2, this.bob, ! this.isPaused);
-	        } else {
-	            return this;
-	        }
-	    }
-	
 	
 
 }

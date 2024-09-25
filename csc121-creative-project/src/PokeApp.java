@@ -15,7 +15,7 @@ public class PokeApp extends PApplet {	// <----- 1. rename AppTemplate everywher
     }
     
     public void setup() {
-        //w = new WORLD(..........)   	<----- 2. create your initial world object
+        w = new PokeWorld(new Player(new Posn(383.0,383.0)),false ) ;  	//<----- 2. create your initial world object
     }
     
     public void draw() {
