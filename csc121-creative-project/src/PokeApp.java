@@ -11,16 +11,17 @@ public class PokeApp extends PApplet {	// <----- 1. rename AppTemplate everywher
     IWorld w;
     
     public void settings() {
-        this.size(768, 576);
+        this.size(768, 576);  // Screen size setup
     }
-    
+
     public void setup() {
-        w = new PokeWorld(new Player(new Posn(383.0,383.0)),false ) ;  	//<----- 2. create your initial world object
+        Player player = new Player(new Posn(383.0, 383.0));  // Create the player
+        player.loadImage(this);  // Load the player's image in setup
+        w = new PokeWorld(player, false);  // Create your world
     }
-    
+
     public void draw() {
-        w = w.update();
-        w.draw(this);
+        w.draw(this, keyPressed, keyCode);  // Pass keyPressed and keyCode to the world
     }
     
     @Override

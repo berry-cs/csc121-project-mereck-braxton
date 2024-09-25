@@ -1,48 +1,32 @@
-import java.util.Objects;
+import processing.core.PApplet;
 
+public class PokeWorld implements IWorld {
+    Player player;
+    boolean isPaused = false;
 
-
-import processing.core.*;
-import processing.event.KeyEvent;
-import processing.event.MouseEvent;
-
-public class PokeWorld implements IWorld{
-	Player player;
-	boolean isPaused =false;
-	///draw method for world and in classes movement in world 
-	
-	
-	/**
-	 * This is to set up the tiles and pixels on the screen 
-	 */
-	//Screen settings
-	final int originalTileSize = 16; //means 16x16 tile default size for player character can update later
-	final int scale = 3;  // this will make the character look 48x48 since pc is bigger screen
-	public final int tileSize = originalTileSize * scale; //48x48 tile actuall displayed on screen 
-	
-	public final int maxScreenCol = 16; // 16 tiles on the screen vertically 
-	public final int maxScreenRow = 12; // 16 tiles on the screen horizontally ratio 4x3
-	public final int screenWidth = tileSize * maxScreenCol; //768 pixels 
-	public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
-	
-	//world map parameters: these can be changed if we want
-	public final int maxWorldCol = 50;
-	public final int maxWorldRow = 50;
-	//public final int worldWidth = tileSize * maxWorldCol;
-	//public final int worldHeight = tileSize * maxWorldRow;
-	
-	
-	public PokeWorld(Player player, boolean isPaused) {
-		this.player = player;
-		this.isPaused = isPaused;
-	}
-	
-	public PApplet draw(PApplet c) {
-        c.background(135, 206, 250);  // clear the screen each time (color sky blue)
-        
-        this.player.draw(c);
-        return c;
+    public PokeWorld(Player player, boolean isPaused) {
+        this.player = player;
+        this.isPaused = isPaused;
     }
-	
 
+    // Update the world (especially the player)
+    public PokeWorld update(boolean keyPressed, int keyCode) {
+        if (!isPaused && keyPressed) {
+            // Update player position based on the key input
+            player.update(keyCode);
+        }
+        return this;
+    }
+
+    // Draw the world
+    public void draw(PApplet c, boolean keyPressed, int keyCode) {
+        // First, update the world state
+        update(keyPressed, keyCode);
+
+        // Clear the screen and set the background color
+        c.background(135, 206, 250); // Sky blue
+
+        // Draw the player after updating its position
+        player.draw(c);
+    }
 }

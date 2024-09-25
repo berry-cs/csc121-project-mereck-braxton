@@ -10,9 +10,11 @@ public interface IWorld {
 	default
 	public IWorld update() { return this; }
 
-	/** produce a visual rendering of this world on the given window */
+	/** produce a visual rendering of this world on the given window 
+	 * @param keyCode 
+	 * @param keyPressed */
 	default 
-	public PApplet draw(PApplet w) { return w; }
+	public void draw(PApplet w, boolean keyPressed, int keyCode) {} //{ return w; }
 
 	/** produce an updated state of this world after a mouse press event */
 	default
